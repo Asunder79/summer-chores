@@ -7,44 +7,27 @@ function mowYard(name,callback){
         // console.log("\tMowYard is done. Now starting weedEat (nested call)...");
 
         // CALL THE NEXT ASYNCHRONOUS STEP (weedEat)
-        weedEat(name, callback,(weedEatError, weedEatResult) => {
-            // --- This code runs 1500ms AFTER weedEat started ---
-            if (weedEatError) {
-                // Propagate the error up to the original caller
-                finalCallback(weedEatError, null);
-                return;
-            }
+        weedEat(name, callback)
             // Both succeeded
             // const finalMessage = `${mowResultMessage} and ${weedEatResult}—chores complete!`;
             // finalCallback(null, finalMessage);
-        });
+        , 2000})};
 
-    }, 2000); // MowYard completes after 2000ms
-}
+     // MowYard completes after 2000ms
+
 
 function weedEat(name,callback){
     let randomchance=randnum();
      setTimeout(() => {
-        try {
             // Check the random failure condition
             if (randomchance >=7) {
-                throw new Error(`${name} fell asleep while weed-eating!`);
+                console.log(`${name} fell asleep while weed-eating!`);
+                return 
             }
             // Success path
             const resultMessage = `${name} weed-ate the yard`;
             console.log(`\t\t[Success] ${resultMessage}`);
-            trimHedges(name, callback,(trimhedgeserror,trimmedhedgesresult)=>{
-                if(trimhedgeserror){
-                finalCallback(weedEatError, null);
-                return;
-                }
-            });
-
-        } catch (e) {
-            // Pass the error up to the callback
-            console.error(`\t\t[FAILURE] Chore interrupted: ${e.message}`);
-            callback(e, null);
-        }
+            trimHedges(name, callback)
     }, 1500);
 }
 
@@ -52,24 +35,15 @@ function trimHedges(name,callback){
     let randomchance=randnum();
  setTimeout(() => {
                     if (randomchance >=6) {
-                throw new Error(`${name} fell asleep while trimming hedges!`);
+                console.log(`${name} fell asleep while trimming hedges!`);
+                return 
             }
         const trimresult = `${name} trimmed the hedges`;
 
         console.log(`\t[Success] ${trimresult}`);
 
         // CALL THE NEXT ASYNCHRONOUS STEP (collectwood)
-        collectWood(name, callback,(collectwooderror, collectwoodresult) => {
-            // --- This code runs 1000ms AFTER weedEat started ---
-            if (collectwooderror) {
-                // Propagate the error up to the original caller
-                finalCallback(collectwooderror, null);
-                return;
-            }
-            // Both succeeded
-            // const finalMessage = `${mowResultMessage} and ${weedEatResult}—chores complete!`;
-            // finalCallback(null, finalMessage);
-        });
+        collectWood(name, callback)
 
     }, 1000);
 }
@@ -78,25 +52,14 @@ function collectWood(name,callback){
     let randomchance=randnum();
      setTimeout(() => {
                     if (randomchance >=5) {
-                throw new Error(`${name} fell asleep while collecting wood!`);
+                console.log(`${name} fell asleep while collecting wood!`)
+                return 
             }
         const woodresult = `${name} collected the wood!`;
-
         console.log(`\t[Success] ${woodresult}`);
 
         // CALL THE NEXT ASYNCHRONOUS STEP (watergarden)
-        waterGarden(name, callback,(watererror, waterresults) => {
-            // --- This code runs 2500ms AFTER weedEat started ---
-            if (watererror) {
-                // Propagate the error up to the original caller
-                finalCallback(watererror, null);
-                return;
-            }
-            // Both succeeded
-            // const finalMessage = `${mowResultMessage} and ${weedEatResult}—chores complete!`;
-            // finalCallback(null, finalMessage);
-        });
-
+        waterGarden(name, callback)
     }, 2500);
 }
 
@@ -104,7 +67,8 @@ function waterGarden(name,callback){
         let randomchance=randnum();
          setTimeout(() => {
                     if (randomchance >=4) {
-                throw new Error(`${name} fell asleep while watering the garden!`);
+                console.log(`${name} fell asleep while watering the garden!`);
+                return;
             }
         const waterresult = `${name} watered the garden!`;
 
