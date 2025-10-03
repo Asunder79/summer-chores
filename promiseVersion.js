@@ -44,3 +44,6 @@ mowYard().then((mowResult) => {
   .then((waterresult)=>{
 
   })
+  .catch((error)=>{
+    console.log(error.message);
+  })
