@@ -2,6 +2,7 @@ PROJECT TITLE:CALLBACK HELL
 
 DESCRIPTION:This is a project which will create the "doom stack" of callbacks, and uses try and catch to produce an exit code during asynchronos execution
 Additional:Promiseversion.js is an experiment of doing asyncrhonos execution using the javascript promise system, chaining .thens together to achieve the same effect.
+Also accomplished this 'callback hell' with async and await. It is the third and final modification as of 10/03/2025
 
 INSTALLMENT INSTRUCTIONS:nodejs, javascript snippets, all dependables were installed with VSC extensions.
 
